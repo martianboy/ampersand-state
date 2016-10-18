@@ -33,15 +33,15 @@ function Base(attrs, options) {
     this.parent = options.parent;
     this.collection = options.collection;
     this._keyTree = new KeyTree();
-    this._initCollections(attrs, _.pick(options, 'parse'));
-    this._initChildren(attrs, _.pick(options, 'parse'));
+    this._initCollections(attrs, options);
+    this._initChildren(attrs, options);
     this._cache = {};
     this._previousAttributes = {};
 
     if (attrs) {
         // omit children and collection attributes since we instantiate
         // them with attrs during _initCollections and _initChildren
-        attrs = omit(attrs, function(attr, name) { return (name in this._collections) || (name in this._children); }, this);
+        attrs = omit(attrs, union(Object.keys(this._children), Object.keys(this._collections)));
         this.set(attrs, assign({silent: true, initial: true}, options));
     }
 
