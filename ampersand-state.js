@@ -174,7 +174,11 @@ assign(Base.prototype, Events, {
                         newVal = {};
                     }
 
-                    this[attr].set(newVal, options);
+                    if (this._collections[attr] && options.reset) {
+                        this[attr].reset(newVal);
+                    } else {
+                        this[attr].set(newVal, options);
+                    }
                     continue;
                 } else if (extraProperties === 'ignore') {
                     continue;
