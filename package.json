@@ -27,7 +27,7 @@
     "coveralls": "^2.11.4",
     "istanbul": "^0.4.0",
     "jshint": "^2.5.3",
-    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.7",
     "precommit-hook": "^3.0.0",
     "tape": "^4.0.3",
     "zuul": "^3.9.0"
